@@ -1,8 +1,11 @@
+package streamApi;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.*;
+import java.util.Map;
+import java.util.stream.Collectors;
 
-public class SecondHighestSalary {
+public class GroupEmployeesByDepartment {
     public static void main(String[] args) {
         List<Employee> empList= Arrays.asList(
                 new Employee("Debasish",1,89000,"developer","Bhubaneshwar"),
@@ -12,15 +15,9 @@ public class SecondHighestSalary {
                 new Employee("Devil",5,78000,"developer","Hyderabad")
         );
 
-        Optional<Double> secondHighest = empList.stream()
-                .map(Employee::getSalary)
-                .distinct()
-                .sorted(Comparator.reverseOrder())
-                .skip(1).findFirst();
-        System.out.println(secondHighest);
+        Map<String,List<Employee>> map= empList.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment));
+        map.forEach((department,employee)->System.out.println(department+"="+employee));
 
-        empList.stream()
-                .filter(e->e.getSalary()==secondHighest.get())
-                .forEach(System.out::println);
     }
 }

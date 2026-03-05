@@ -1,3 +1,5 @@
+package streamApi;
+
 import java.util.*;
 public class LongestString {
     public static void main(String[] args) {

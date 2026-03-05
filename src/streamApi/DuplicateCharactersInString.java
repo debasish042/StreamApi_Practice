@@ -1,4 +1,5 @@
-import java.util.HashSet;
+package streamApi;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 

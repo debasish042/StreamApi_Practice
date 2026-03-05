@@ -1,3 +1,5 @@
+package streamApi;
+
 import java.util.*;
 import java.util.stream.Collectors;
 

@@ -1,9 +1,9 @@
+package streamApi;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
-public class GroupEmployeesByDepartment {
+public class SumOfSalaries {
     public static void main(String[] args) {
         List<Employee> empList= Arrays.asList(
                 new Employee("Debasish",1,89000,"developer","Bhubaneshwar"),
@@ -13,9 +13,9 @@ public class GroupEmployeesByDepartment {
                 new Employee("Devil",5,78000,"developer","Hyderabad")
         );
 
-        Map<String,List<Employee>> map= empList.stream()
-                .collect(Collectors.groupingBy(Employee::getDepartment));
-        map.forEach((department,employee)->System.out.println(department+"="+employee));
-
+        double sum= empList.stream()
+                .mapToDouble(Employee::getSalary)
+                .sum();
+        System.out.println(sum);
     }
 }

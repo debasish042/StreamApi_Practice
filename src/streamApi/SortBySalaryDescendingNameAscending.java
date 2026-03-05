@@ -1,8 +1,11 @@
+package streamApi;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class GetTheIdAndNameFromListOfEmployee {
+public class SortBySalaryDescendingNameAscending {
     public static void main(String[] args) {
+
         List<Employee> empList= Arrays.asList(
                 new Employee("Debasish",1,89000,"developer","Bhubaneshwar"),
                 new Employee("Raja",2,90000,"Admin","Bengaluru"),
@@ -11,8 +14,12 @@ public class GetTheIdAndNameFromListOfEmployee {
                 new Employee("Devil",5,78000,"developer","Hyderabad")
         );
 
-        Map<Integer,String>map= empList.stream()
-                .collect(Collectors.toMap(Employee::getId,Employee::getName));
-        System.out.println(map);
+       List<Employee> list3= empList.stream()
+               .sorted(
+                       Comparator.comparing(Employee::getDepartment).reversed()
+                               .thenComparing(Comparator.comparing(Employee::getSalary).reversed())
+                               .thenComparing(Employee::getName)
+               ).collect(Collectors.toList());
+       list3.forEach(System.out::println);
     }
 }

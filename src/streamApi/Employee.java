@@ -1,3 +1,5 @@
+package streamApi;
+
 public class Employee {
 
     private String name;
@@ -56,6 +58,6 @@ public class Employee {
 
     @Override
     public String toString(){
-        return "Employee[name="+name+",id="+id+",salary="+salary+",department="+department+",city="+city+"]";
+        return "streamApi.Employee[name="+name+",id="+id+",salary="+salary+",department="+department+",city="+city+"]";
     }
 }

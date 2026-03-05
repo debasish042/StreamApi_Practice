@@ -1,7 +1,9 @@
-import java.util.Arrays;
-import java.util.List;
+package streamApi;
 
-public class SumOfSalaries {
+import java.util.*;
+import java.util.stream.Collectors;
+
+public class GetTheIdAndNameFromListOfEmployee {
     public static void main(String[] args) {
         List<Employee> empList= Arrays.asList(
                 new Employee("Debasish",1,89000,"developer","Bhubaneshwar"),
@@ -11,9 +13,8 @@ public class SumOfSalaries {
                 new Employee("Devil",5,78000,"developer","Hyderabad")
         );
 
-        double sum= empList.stream()
-                .mapToDouble(Employee::getSalary)
-                .sum();
-        System.out.println(sum);
+        Map<Integer,String>map= empList.stream()
+                .collect(Collectors.toMap(Employee::getId,Employee::getName));
+        System.out.println(map);
     }
 }
